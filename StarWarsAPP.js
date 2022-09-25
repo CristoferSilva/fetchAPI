@@ -129,7 +129,7 @@ function changeRequestDivVisibility() {
     if (visibility == "visible" || visibility == "") {
         setHiddenVisibility("RequestDiv");
         document.getElementById("requestReactangle").style["height"] = "60px";
-        document.getElementById("requestReactangle").style.animation  = "changeWidth 2s";
+        document.getElementById("requestReactangle").style.animation  = "changeWidth 3s";
         setVisibleVisibility("starWarsImg")
     
     } else {
