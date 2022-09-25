@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="StarWarsAPP.css" rel="stylesheet" />
+    <script src="StarWarsAPP.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>STAR WARS API CONSUMER</h1>
+    <div id="HeadDiv" class="headReactangle">
+        <input type="number" name="ActorID" id="ActorID" value="1" min="1" class="input"/>
+        <button id="SendRequest" class="buttonGet" onclick=sendRequest()>GET >></button>
+        <button id="minimizeButton" class="minimizeButton" onclick=changeRequestDivVisibility()></button>
+    </div>
+    <div id="requestReactangle" class="requestReactangle">
+        <img id="starWarsImg" src="https://i.pinimg.com/originals/b6/af/5a/b6af5aeff0ee43a4253fc70c167bb6db.png" class="starWarsImg">
+        <div id="RequestDiv" class="requestDiv"></div>
+        <img id="spinnerImg" src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" class="spinnerImg">
+    </div>
+
+</body>
+
+</html>
