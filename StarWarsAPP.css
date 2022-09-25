@@ -1,13 +1,17 @@
+body{
+    background-color: rgba(209, 209, 214, 0.432);
+}
+
 .headReactangle{
     border-radius: 10px;
     margin: auto;
     width: 300px;
     height: 32px;
     max-height: 32px;
-    transition: all 0.5s;
+    transition: all 0.7s;
     white-space: nowrap;
     overflow: hidden;
-    box-shadow:  1px 1px 20px rgba(1, 1, 1, 0.555) ;
+    box-shadow:  1px 1px 20px rgba(167,51,208, 0.555) ;
     background-color: black;
 }
 .requestReactangle{
@@ -18,10 +22,10 @@
     width: 19%;
     white-space: nowrap;
     overflow: hidden;
-    transition: all 0.4s;
+    transition: all 0.6s;
     min-height: 100%;
     min-width: 246.297px;
-    box-shadow:  1px 1px 20px rgba(1, 1, 1, 0.555) ;
+    box-shadow:  1px 25px 20px rgba(166, 51, 208, 0.411) ;
     background-color: black;
 }
 
@@ -67,12 +71,12 @@
     border-radius: 5px;
     width: auto;
     height: 25px;
-    color: white;
+    color: rgb(28, 28, 30);
     cursor: pointer;
     transition: 0.3s;
     opacity: 1;
     font-family: Consolas, monaco, monospace;
-    background-color: rgb(0, 122, 225);
+    background-color: #a733d0;
 }
 
 .requestDiv{
@@ -83,6 +87,9 @@
 }
 
 .buttonGet:hover{
+    opacity: 0.6;
+}
+.buttonGet:disabled{
     opacity: 0.6;
 }
 
@@ -129,6 +136,11 @@ p{
     font-family: Consolas, monaco, monospace;
 }
 
+
+@keyframes changeWidth {
+    0%   {width: 300px;}
+    100%  {width: 246.297px;}
+  }
 
 /* .buttonGet span{
     position: absolute;
