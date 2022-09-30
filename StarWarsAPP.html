@@ -14,8 +14,11 @@
     <h1>STAR WARS API CONSUMER</h1>
     <div id="HeadDiv" class="headReactangle">
         <input type="number" name="ActorID" id="ActorID" value="1" min="1" class="input"/>
-        <button id="SendRequest" class="buttonGet" onclick=sendRequest()>GET >></button>
-        <button id="minimizeButton" class="minimizeButton" onclick=changeRequestDivVisibility()></button>
+        <button id="sendRequest" class="buttonGet" onclick=sendRequest()>GET >></button>
+        <button id="minimizeButton" class="minimizeButton" onclick=changeRequestDivVisibility()>
+            <img src="assets/dynamicGif.gif" width="28px" height="28px" alt="">
+
+        </button>
     </div>
     <div id="requestReactangle" class="requestReactangle">
         <img id="starWarsImg" src="https://i.pinimg.com/originals/b6/af/5a/b6af5aeff0ee43a4253fc70c167bb6db.png" class="starWarsImg">
@@ -23,6 +26,8 @@
         <img id="spinnerImg" src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" class="spinnerImg">
     </div>
 
-</body>
+    <a class="minimizeDynamicButton"> 
+    </a>
 
+</body>
 </html>

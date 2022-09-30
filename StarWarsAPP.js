@@ -1,17 +1,37 @@
 //#region Statics Variables
+var btnSendRequest;
+var requestReactangle;
+var btnMinimizeButton;
+var spinnerImgID;
+var starWarsImgID;
+var requestDivID;
+var minimizeButtonID;
 //#endregion
 //#region Domain
+
+function initializeAtributes() {
+    btnSendRequest = document.getElementById("sendRequest");
+    requestReactangle = document.getElementById("requestReactangle");
+    btnMinimizeButton = document.getElementById("minimizeButton");
+    spinnerImgID = "spinnerImg";
+    starWarsImgID = "starWarsImg";
+    requestDivID = "RequestDiv";
+    minimizeButtonID = "minimizeButton";
+}
+
 async function sendRequest() {
-    document.getElementById('SendRequest').disabled = true;
+    initializeAtributes();
+    btnSendRequest.disabled = true;
+    btnMinimizeButton.disabled = true;
 
-    setVisibleVisibility("spinnerImg")
-    setHiddenVisibility("starWarsImg")
-    setVisibleVisibility("RequestDiv");
+    setVisibleVisibility(spinnerImgID)
+    setHiddenVisibility(starWarsImgID)
+    setVisibleVisibility(requestDivID);
 
-    document.getElementById("requestReactangle").style["height"] = "auto";
+    requestReactangle.style["height"] = "auto";
 
 
-    let requestDiv = document.getElementById("RequestDiv");
+    let requestDiv = document.getElementById(requestDivID);
     requestDiv.innerHTML = "";
 
     let userInput = document.getElementById("ActorID");
@@ -20,14 +40,15 @@ async function sendRequest() {
     let actorObject = await creatActorObject(getActorsJson);
 
     createDOMElements(actorObject);
-    setHiddenVisibility("spinnerImg")
-    setVisibleVisibility("minimizeButton")
-    document.getElementById('SendRequest').disabled = false;
+    setHiddenVisibility(spinnerImgID)
+    setVisibleVisibility(minimizeButtonID)
 
+    btnSendRequest.disabled = false;
+    btnMinimizeButton.disabled = false;
 }
 
 function createDOMElements(actorObject) {
-    let requestDiv = document.getElementById("RequestDiv");
+    let requestDiv = document.getElementById(requestDivID);
 
     putAtributeIntoDOM(requestDiv, "Name", actorObject.name);
     putAtributeIntoDOM(requestDiv, "Heigh", actorObject.height);
@@ -56,39 +77,18 @@ function putAtributeIntoDOM(DOMelement, atributeName, value) {
 }
 
 async function getActorJson(actorID) {
-
     const response = await fetch(`https://swapi.dev/api/people/${actorID}`);
     const data = await response.json();
     return data;
-    // await fetch(`https://swapi.dev/api/people/${actorID}`)
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error("Error when making request: " + response.url);
-    //         }
-    //         return response.json();
-    //     }).then(json => {
-    //         return json;
-    //     }).catch(error => {
-    //         console.error(error.message);
-    //     })
 }
 
 async function getJson(addressRequest) {
-
     const response = await fetch(addressRequest);
     const data = await response.json();
     return data;
-    // await fetch(addressRequest)
-    //     . then(async (response) => {
-    //         if (!response.ok) {
-    //             throw new Error("Error when making request: " + response.url);
-    //         }
-    //         return await response.json();
-    //     })
 }
 
 async function creatActorObject(actorJson) {
-
     let auxHomeworld = await getJson(actorJson.homeworld);
     let auxFilms = await getActorsFilms(actorJson.films);
     const actor = {
@@ -98,19 +98,16 @@ async function creatActorObject(actorJson) {
         homeworld: auxHomeworld.name,
         films: auxFilms
     }
-
     return actor;
 }
 
 async function getActorsFilms(films) {
     let filmsArrayString = [];
-
     for (let index = 0; index < films.length; index++) {
         let filme = await getJson(films[index]);
         let title = await filme.title;
         filmsArrayString.push(title);
     }
-
     return filmsArrayString;
 }
 
@@ -124,18 +121,18 @@ function setVisibleVisibility(elementID) {
 //#endregion
 //#region Front-End Logic
 function changeRequestDivVisibility() {
-    let visibility = document.getElementById("RequestDiv").style.visibility;
+    let visibility = document.getElementById(requestDivID).style.visibility;
 
     if (visibility == "visible" || visibility == "") {
-        setHiddenVisibility("RequestDiv");
-        document.getElementById("requestReactangle").style["height"] = "60px";
-        document.getElementById("requestReactangle").style.animation  = "changeWidth 3s";
-        setVisibleVisibility("starWarsImg")
+        setHiddenVisibility(requestDivID);
+        requestReactangle.style["height"] = "60px";
+        requestReactangle.style.animation  = "changeWidth 3s";
+        setVisibleVisibility(starWarsImgID)
     
     } else {
-        setHiddenVisibility("starWarsImg")
-        setVisibleVisibility("RequestDiv");
-        document.getElementById("requestReactangle").style["height"] = " 571.719px";
+        setHiddenVisibility(starWarsImgID)
+        setVisibleVisibility(requestDivID);
+        requestReactangle.style["height"] = " 571.719px";
     }
 
 }
